@@ -36,6 +36,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'public', 'index.html'),
+    }),
+    new ModuleFederationPlugin({
+      name: 'Shell',
+      remotes: {
+        Home: 'Home@http://localhost:3001/remoteEntry.js',
+        Auth: 'Auth@http://localhost:3002/remoteEntry.js',
+      }
     })
   ]
 }
